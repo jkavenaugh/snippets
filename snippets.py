@@ -89,7 +89,7 @@ my_cursor.execute("""
 
 
 
-# sniff raw socket
+# receive raw socket
 
 import socket
 
@@ -100,3 +100,14 @@ s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 s.bind((eth, 3))
 
 data = s.recvfrom(65565)
+
+# receive ICMP
+import socket
+
+s = socket.socket(socket.AF_INET, socket.SOCK_RAW, 1)
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+while True:
+
+    data = (s.recvfrom(1500))
+    print(data)
+

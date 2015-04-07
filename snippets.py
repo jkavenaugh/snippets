@@ -40,6 +40,7 @@ def send_report(log_content):
     server.quit()
 
 # Logging
+import logging
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -84,6 +85,9 @@ my_cursor.execute("""
                   (value1, value2))
 
     my_cursor.close()
+
+
+
 
 # sniff raw socket
 

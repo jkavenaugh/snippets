@@ -1,0 +1,76 @@
+{
+  "extractors": [
+    {
+      "condition_type": "none",
+      "condition_value": "",
+      "converters": [
+        {
+          "type": "syslog_pri_facility",
+          "config": {}
+        }
+      ],
+      "cursor_strategy": "copy",
+      "extractor_config": {
+        "regex_value": "<(.+)>"
+      },
+      "extractor_type": "regex",
+      "order": 0,
+      "source_field": "message",
+      "target_field": "facility",
+      "title": "Get syslog facility"
+    },
+    {
+      "condition_type": "none",
+      "condition_value": "",
+      "converters": [
+        {
+          "type": "numeric",
+          "config": {}
+        }
+      ],
+      "cursor_strategy": "copy",
+      "extractor_config": {
+        "regex_value": "%(.+?)-"
+      },
+      "extractor_type": "regex",
+      "order": 2,
+      "source_field": "message",
+      "target_field": "local_facility",
+      "title": "Local Facility"
+    },
+    {
+      "condition_type": "none",
+      "condition_value": "",
+      "converters": [],
+      "cursor_strategy": "copy",
+      "extractor_config": {
+        "regex_value": "^(?:[^:]*\\:){5}\\ (.+)"
+      },
+      "extractor_type": "regex",
+      "order": 4,
+      "source_field": "message",
+      "target_field": "message",
+      "title": "Message"
+    },
+    {
+      "condition_type": "none",
+      "condition_value": "",
+      "converters": [
+        {
+          "type": "syslog_pri_level",
+          "config": {}
+        }
+      ],
+      "cursor_strategy": "copy",
+      "extractor_config": {
+        "regex_value": "-(\\d)-"
+      },
+      "extractor_type": "regex",
+      "order": 1,
+      "source_field": "message",
+      "target_field": "severity",
+      "title": "Local Level"
+    }
+  ],
+  "version": "1.0.2 (e5432f1)"
+}
